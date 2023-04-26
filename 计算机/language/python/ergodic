@@ -1,0 +1,11 @@
+* range
+```
+for i in range(10):
+    print(i)
+```
+
+* enumerate
+```
+for index,value in enumerate(mylist):
+    print(index,value)
+```

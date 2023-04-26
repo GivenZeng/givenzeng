@@ -1,0 +1,1 @@
+- 中文文档 https://kubernetes.io/cn/docs/tutorials/object-management-kubectl/object-management/
