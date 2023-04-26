@@ -82,13 +82,4 @@ OpenTracing 中的 Tracer API 只定义了 inject 和 extract 两个方法接口
 ## tracing和日志的关系
 流式日志系统提供的调用链搜索 包含了 rpc log（含access log）和 app log两部分，其中 rpc log 是指微服务间调用日志，例如A调用了B是否成功耗时多少的信息，一般由 rpc 框架默认添加，而 app log 是指由在业务研发在业务代码中自行打印的业务日志。在流式日志系统中，rpc log和app log一样，使用全量采集模式，在存储侧和埋点侧的成本都比较高，难以推广扩展到 mysql/redis 等基础组件的 trace，也无法支持更细粒度如函数级 span 的采集。
 
-如果你关注的是调用链中的业务日志：请在 Argos “日志”-"调用链检索" 下按 logid 搜索该 logid 流经各微服务模块上报的业务日志。
-
-如果你关注的是调用链中各微服务间的调用关系，每个环节耗时如何：请在 Argos “链路追踪”-“条件查询”上按条件查询 trace；如果要追踪单个 logid，请提前对 logid 进行染色，然后在 Argos "链路追踪"-“Logid 检索”下按logid搜索。
-
 链路追踪命中采样的调用链条可以比较方便地根据logid跳转到调用链日志。
-
-## 日志收集的设计
-
-## 与 gopkg/logs 和 gopkg/metrics 的关系？
-bytedtrace sdk 底层仍然使用 gopkg/logs 和 gopkg/metrics 基础库，但是在封装层做了一些数据规范并且实现了按 ctx 串联这些数据并提供相应的关联查询能力。业务可以根据实际场景选择使用 bytedtrace sdk 埋点还是直接用 log/metrics 基础库埋点，具体请阅读：docs/doccnqKqCeJh9ymo2EM2wUNnEub
