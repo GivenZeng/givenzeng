@@ -77,7 +77,6 @@ OpenTracing 中的 Tracer API 只定义了 inject 和 extract 两个方法接口
 - Query - 接收查询请求，然后从后端存储系统中检索 trace 并通过 UI 进行展示。Query 是无状态的，您可- 以启动多个实例，把它们部署在 nginx 这样的负载均衡器后面。
 
 
-# Opentracing在字节的应用
 
 ## tracing和日志的关系
 流式日志系统提供的调用链搜索 包含了 rpc log（含access log）和 app log两部分，其中 rpc log 是指微服务间调用日志，例如A调用了B是否成功耗时多少的信息，一般由 rpc 框架默认添加，而 app log 是指由在业务研发在业务代码中自行打印的业务日志。在流式日志系统中，rpc log和app log一样，使用全量采集模式，在存储侧和埋点侧的成本都比较高，难以推广扩展到 mysql/redis 等基础组件的 trace，也无法支持更细粒度如函数级 span 的采集。
