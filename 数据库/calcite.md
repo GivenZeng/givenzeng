@@ -33,6 +33,8 @@ Calcite采用的是业界大数据查询框架的一种通用思路，它的目�
 - JDBC：对外提供基于JDBC协议的server port，用户可以通过http、jdbc client连接Calcite server
 - SQL Parser负责语法解析，生成AST
 - Operator Experssion生成关系表达式（RelNode Tree）
+
+![](./img/calcite_sql2ast2reltree.png)
 ```sql
 select * from TEST_CSV.TEST01 where TEST01.NAME1='hello';
 
@@ -396,3 +398,4 @@ public class CSVTableScan extends TableScan implements CSVRel {
 - [calcite go client](https://github.com/apache/calcite-avatica-go)
 - [calcite github](https://github.com/apache/calcite/tree/main)
 - [calcite doc](https://calcite.apache.org/docs/)
+- [calcite 关系代数](https://liebing.org.cn/apache-calcite-relational-algebra.html)
